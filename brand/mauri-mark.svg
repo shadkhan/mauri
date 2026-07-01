@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 320" width="200" height="320">
+  <title>Mauri — spine of life mark</title>
+  <desc>The Mauri logo mark: a vertical spine with asymmetric organic branches in teal (body/science), purple (spirit/homeopathy), and amber (energy/celebration), rooted in a circle.</desc>
+
+  <!-- Spine -->
+  <line x1="100" y1="20" x2="100" y2="272"
+        stroke="#1D9E75" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Upper branches — teal — body, science, labs -->
+  <path d="M100,52 Q148,34 162,14"
+        stroke="#1D9E75" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M100,52 Q56,36 44,16"
+        stroke="#1D9E75" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.45"/>
+
+  <path d="M100,98 Q152,76 170,52"
+        stroke="#1D9E75" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M100,98 Q50,78 34,54"
+        stroke="#1D9E75" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- Mid branches — purple — spirit, homeopathy, wairua -->
+  <path d="M100,148 Q146,128 158,108"
+        stroke="#7F77DD" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+  <path d="M100,148 Q56,130 46,110"
+        stroke="#7F77DD" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.5"/>
+
+  <path d="M100,192 Q136,178 144,164"
+        stroke="#7F77DD" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.78"/>
+  <path d="M100,192 Q66,179 60,166"
+        stroke="#7F77DD" stroke-width="1.3" fill="none" stroke-linecap="round" opacity="0.42"/>
+
+  <path d="M100,232 Q124,222 128,212"
+        stroke="#7F77DD" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- Amber trace — energy, celebration, life force -->
+  <path d="M100,256 Q116,249 118,240"
+        stroke="#EF9F27" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.72"/>
+  <path d="M100,256 Q86,250 84,242"
+        stroke="#EF9F27" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.42"/>
+
+  <!-- Root circle — whenua, groundedness -->
+  <circle cx="100" cy="284" r="18" fill="#1D9E75"/>
+  <circle cx="100" cy="284" r="10" fill="white"/>
+</svg>

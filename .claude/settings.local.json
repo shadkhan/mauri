@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(New-Item *)",
+      "Read(//mnt/d/AI-Health-Homeopathy/**)",
+      "Bash(npm install *)",
+      "Bash(npm --version)",
+      "PowerShell(Get-Process *)",
+      "PowerShell(npm list *)",
+      "PowerShell(npm install *)",
+      "PowerShell(npm run *)",
+      "PowerShell(pnpm *)",
+      "PowerShell(pnpm install *)",
+      "PowerShell(pnpm dev *)"
+    ]
+  }
+}
