@@ -6,6 +6,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { PageContainer, PageIntro, PageSection } from '@/components/PageLayout'
 import { articles, getArticle } from '@/lib/articles'
+import { absoluteUrl, siteConfig } from '@/lib/site'
 
 type BlogArticlePageProps = {
   params: {
@@ -31,8 +32,25 @@ export function generateMetadata({
   }
 
   return {
-    title: `${article.title} | Mauri`,
+    title: article.title,
     description: article.description,
+    alternates: {
+      canonical: `/blog/${article.slug}`,
+    },
+    openGraph: {
+      title: article.title,
+      description: article.description,
+      url: absoluteUrl(`/blog/${article.slug}`),
+      siteName: siteConfig.name,
+      type: 'article',
+      images: [{ url: siteConfig.ogImage, alt: article.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.description,
+      images: [siteConfig.ogImage],
+    },
   }
 }
 

@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from 'react'
 import { motion } from 'framer-motion'
+import { apiEndpoint } from '@/lib/site'
 
 type SubmitState = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -17,7 +18,7 @@ export default function WaitlistForm() {
     setMessage('')
 
     try {
-      const response = await fetch('/api/leads', {
+      const response = await fetch(apiEndpoint('/leads'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

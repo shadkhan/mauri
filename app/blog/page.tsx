@@ -4,11 +4,34 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { PageContainer, PageIntro, PageSection } from '@/components/PageLayout'
 import { articles } from '@/lib/articles'
+import { absoluteUrl, siteConfig } from '@/lib/site'
+
+const title = 'Mauri Blog | PCOS, PCOD, Period Pain and Hormonal Health'
+const description =
+  'Read Mauri guides on PCOS, PCOD, hormonal phenotypes, period pain, endometriosis differences, and body literacy for more informed care conversations.'
 
 export const metadata: Metadata = {
-  title: 'Mauri Blog | PCOS, PCOD, Phenotypes, and Endometriosis',
-  description:
-    'Educational articles on PCOS, PCOD, phenotype patterns, and endometriosis differences from Mauri.',
+  title: {
+    absolute: title,
+  },
+  description,
+  alternates: {
+    canonical: '/blog',
+  },
+  openGraph: {
+    title,
+    description,
+    url: absoluteUrl('/blog'),
+    siteName: siteConfig.name,
+    type: 'website',
+    images: [{ url: siteConfig.ogImage, alt: 'Mauri blog' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: [siteConfig.ogImage],
+  },
 }
 
 export default function BlogPage() {

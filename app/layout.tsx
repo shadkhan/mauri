@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
+import { absoluteUrl, siteConfig } from '@/lib/site'
 import './globals.css'
 
 const playfair = Playfair_Display({
@@ -15,12 +16,17 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
   title: {
-    default: 'Mauri | Integrative PCOS, PCOD & Hormonal Health Support',
+    default: siteConfig.title,
     template: '%s | Mauri',
   },
-  description:
-    'A gentle hormonal health journey for PCOS, PCOD, painful periods, phenotype awareness, and care team conversation preparation.',
+  description: siteConfig.description,
+  alternates: {
+    canonical: '/',
+  },
+  manifest: '/manifest.json',
   icons: {
     icon: [
       {
@@ -32,11 +38,24 @@ export const metadata: Metadata = {
     apple: '/brand/mauri-app-icon-1024.svg',
   },
   openGraph: {
-    title: 'Mauri | Integrative PCOS, PCOD & Hormonal Health Support',
-    description:
-      'Understand your hormonal pattern, prepare for better Mauri care team conversations, and move from confusion to clarity.',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: absoluteUrl('/'),
+    siteName: siteConfig.name,
     type: 'website',
-    images: ['/brand/mauri-logo-primary.svg'],
+    images: [
+      {
+        url: siteConfig.ogImage,
+        alt: 'Mauri hormonal health support',
+      },
+    ],
+    locale: 'en_IN',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
   },
 }
 

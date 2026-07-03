@@ -13,6 +13,7 @@ import {
   RotateCcw,
 } from 'lucide-react'
 import { PageContainer, PageSection } from '@/components/PageLayout'
+import { apiEndpoint } from '@/lib/site'
 
 type SingleAnswer = string
 type MultiAnswer = string[]
@@ -876,7 +877,7 @@ export default function PhenotypeQuiz() {
     setMessage('')
 
     try {
-      const response = await fetch('/api/leads', {
+      const response = await fetch(apiEndpoint('/leads'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -62,3 +62,48 @@
     }
   }
 }
+@keyframes mauri-grow {
+  0%,
+  12% {
+    stroke-dashoffset: 1;
+  }
+  42%,
+  78% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes mauri-root {
+  0%,
+  42%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.7;
+  }
+  54%,
+  82% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.mauri-grow-line {
+  animation: mauri-grow 5.8s ease-in-out infinite;
+}
+
+.mauri-root-pulse {
+  animation: mauri-root 5.8s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mauri-grow-line,
+  .mauri-root-pulse {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}

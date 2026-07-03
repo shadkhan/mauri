@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
+import AnimatedMauriMark from '@/components/AnimatedMauriMark'
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -38,13 +39,14 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-3 shrink-0">
-            <img
-              src="/brand/mauri-mark.svg"
-              alt="Mauri"
-              className="h-11 w-11 sm:h-12 sm:w-12"
-            />
-            <span className="font-playfair text-3xl leading-none tracking-[0.12em] text-teal sm:text-4xl">
-              mauri
+            <AnimatedMauriMark />
+            <span className="flex flex-col">
+              <span className="font-playfair text-3xl leading-none tracking-[0.12em] text-teal sm:text-4xl">
+                mauri
+              </span>
+              <span className="mt-1 hidden text-xs font-medium leading-none tracking-[0.08em] text-muted lg:block">
+                Life force. Healing. Balance.
+              </span>
             </span>
           </Link>
 

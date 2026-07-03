@@ -3,14 +3,11 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
-  BadgeCheck,
   BookOpen,
-  Compass,
   GraduationCap,
   HeartHandshake,
   Leaf,
   MessageCircleHeart,
-  ShieldCheck,
   Sparkles,
 } from 'lucide-react'
 import { PageContainer } from '@/components/PageLayout'
@@ -20,227 +17,220 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 }
 
-const majorSections = [
+const lessons = [
   {
-    title: 'Why Mauri Exists',
-    icon: MessageCircleHeart,
-    paragraphs: [
-      "Mauri wasn't built from a business plan. It was built from years of listening.",
-      'Listening to women who felt unheard. Listening to women who were told everything was normal. Listening to women who had almost given up.',
-      'Over the years, we supported more than 90 women with PCOS and hormonal health challenges. Some improved quickly. Some struggled. Some relapsed. Some returned months later.',
-      "Every journey taught us something. Those lessons became the foundation of Mauri. Not just the successes. The failures too.",
-    ],
-    quote:
-      "Sometimes the greatest learning comes from understanding why something didn't work.",
-  },
-  {
-    title: 'The Mauri Recovery Method',
-    icon: Leaf,
-    paragraphs: [
-      'Mauri is not another symptom tracker. It is a structured healing journey.',
-      'Our method combines understanding your unique hormonal story, personalized guidance, nutrition, lifestyle, research-informed movement, education, progress tracking, and ongoing support.',
-      'Every recommendation is designed to answer not only what should I do, but also why am I doing this.',
-    ],
-    quote: 'Because understanding creates confidence. And confidence creates consistency.',
-  },
-  {
-    title: 'What Makes Mauri Different',
-    icon: Sparkles,
-    paragraphs: [
-      'Many platforms help you manage PCOS. Mauri helps you understand it.',
-      'Many apps tell you what to eat. We explain why.',
-      'Many apps track symptoms. We help you discover what those symptoms may be trying to tell you.',
-      'Many apps focus on keeping you engaged. We focus on helping you graduate.',
-    ],
-  },
-  {
-    title: 'We Believe Every Woman Has Her Own Story',
-    icon: BookOpen,
-    paragraphs: [
-      'Two women can both have PCOS. One struggles with insulin resistance. Another with chronic stress. Another with inflammation. Another with hormonal imbalance despite normal weight.',
-      'Giving all of them the same advice rarely works.',
-      'That is why Mauri begins by understanding your story before suggesting your path.',
-    ],
-    quote: 'Personalized care begins with personalized understanding.',
-  },
-]
-
-const journeySteps = [
-  {
-    title: 'Understand',
-    description: 'Learn your likely hormonal pattern and begin seeing the bigger picture.',
-  },
-  {
-    title: 'Discover',
+    title: 'Symptoms Have Stories',
     description:
-      'Identify possible underlying drivers through questionnaires, Mauri care team discussion, and appropriate investigations when needed.',
+      'Pain, irregular cycles, acne, hair fall, fatigue, and weight changes deserve careful listening, not quick judgment.',
   },
   {
-    title: 'Personalize',
+    title: 'One Plan Rarely Fits All',
     description:
-      'Build a plan that may include nutrition guidance, supportive lifestyle changes, education, supplements, and other appropriate approaches based on your needs.',
+      'Women with similar diagnoses may need very different support depending on stress, insulin resistance, inflammation, sleep, nutrition, and medical history.',
   },
   {
-    title: 'Track',
+    title: 'Education Creates Confidence',
     description:
-      'Follow meaningful progress including periods, energy, pain, sleep, mood, weight, acne, hair health, and the small changes that matter.',
-  },
-  {
-    title: 'Celebrate',
-    description: 'Recognize every step forward. Small improvements become lasting habits.',
-  },
-  {
-    title: 'Graduate',
-    description:
-      'Our goal is not to keep you subscribed forever. Our goal is to help you understand your body well enough that one day you no longer need Mauri every day.',
+      'When women understand why a step matters, they are more likely to make steady, compassionate changes.',
   },
 ]
 
 export default function AboutMauriPageContent() {
   return (
     <div className="bg-warm-white">
-      <section className="px-4 pb-16 pt-28 sm:px-6 lg:pb-20">
-        <PageContainer size="narrow">
+      <section className="px-4 pb-14 pt-28 sm:px-6 lg:pb-20">
+        <PageContainer>
           <motion.div
             initial="hidden"
             animate="visible"
             variants={fadeUp}
             transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="mx-auto max-w-4xl text-center"
           >
             <p className="text-sm font-medium uppercase tracking-[0.08em] text-teal">
               About Mauri
             </p>
             <h1 className="mt-3 font-playfair text-4xl font-normal leading-tight text-teal-dark sm:text-5xl">
-              We believe your body is not working against you.
+              Mauri exists to help women feel understood in their own bodies.
             </h1>
-            <div className="mt-6 space-y-4 text-lg leading-8 text-ink">
-              <p>Sometimes it whispers before it screams.</p>
+            <div className="mx-auto mt-6 max-w-3xl space-y-4 text-lg leading-8 text-ink">
               <p>
-                A missed period. Persistent acne. Hair falling into your hands.
-                Weight that refuses to change. Pain that everyone tells you is
-                normal.
+                We created Mauri for women who have been told their pain is
+                normal, their reports are fine, or their only option is to keep
+                trying harder.
               </p>
-              <p>These are not random events.</p>
+              <p>
+                PCOS, PCOD, painful periods, and hormonal changes can feel
+                confusing and lonely. Mauri brings education, supportive
+                guidance, and body literacy into one calm place, so women can
+                understand their patterns and make informed next steps.
+              </p>
             </div>
-            <div className="mt-8 rounded-xl bg-teal-light p-6">
+            <div className="mx-auto mt-8 max-w-3xl rounded-xl bg-teal-light p-6">
               <p className="font-playfair text-2xl font-normal leading-snug text-teal-dark sm:text-3xl">
-                They are your body's way of asking to be understood.
+                Your body is not the enemy. It may be asking to be heard.
               </p>
             </div>
-            <p className="mt-8 leading-8 text-muted">
-              Mauri was created because too many women spend years searching for
-              answers, trying one diet after another, following conflicting
-              advice, changing supplements, switching medicines, and still
-              wondering: why isn't anything working?
-            </p>
-            <p className="mt-4 font-playfair text-2xl font-normal leading-snug text-teal-dark">
-              We believe healing begins with understanding. Not guessing. Not
-              fear. Not chasing the latest trend.
-            </p>
           </motion.div>
         </PageContainer>
       </section>
 
       <section className="px-4 py-14 sm:px-6 sm:py-16">
         <PageContainer>
-          <div className="grid gap-5 lg:grid-cols-2">
-            {majorSections.map((section, index) => {
-              const Icon = section.icon
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+            variants={fadeUp}
+            transition={{ duration: 0.55 }}
+            className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-stretch"
+          >
+            <div className="flex h-full flex-col justify-center rounded-xl bg-teal-dark p-6 text-teal-light sm:p-8">
+              <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-teal-light text-teal">
+                <Leaf className="h-6 w-6" aria-hidden="true" />
+              </div>
+              <p className="mt-6 text-sm font-medium uppercase tracking-[0.08em] text-teal-mid">
+                Meaning behind the name
+              </p>
+              <h2 className="mt-3 font-playfair text-4xl font-normal leading-tight text-teal-light sm:text-5xl">
+                Why We Chose the Name Mauri
+              </h2>
+              <p className="mt-5 max-w-md leading-7 text-teal-mid">
+                A name chosen for life force, inner vitality, balance, and the
+                quiet strength women rebuild through understanding.
+              </p>
+            </div>
 
-              return (
-                <motion.article
-                  key={section.title}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.25 }}
-                  variants={fadeUp}
-                  transition={{ duration: 0.55, delay: index * 0.05 }}
-                  className="rounded-xl border border-border bg-white/75 p-5 shadow-sm sm:p-6"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-teal-light text-teal">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
-                    </div>
-                    <h2 className="font-playfair text-3xl font-normal leading-tight text-teal-dark">
-                      {section.title}
-                    </h2>
-                  </div>
-                  <div className="mt-5 space-y-4 leading-8 text-ink">
-                    {section.paragraphs.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
-                    ))}
-                  </div>
-                  {section.quote ? (
-                    <div className="mt-6 rounded-lg bg-amber-light p-5">
-                      <p className="font-playfair text-2xl font-normal leading-snug text-teal-dark">
-                        {section.quote}
-                      </p>
-                    </div>
-                  ) : null}
-                </motion.article>
-              )
-            })}
-          </div>
+            <div className="flex h-full flex-col justify-center rounded-xl border border-border bg-white/80 p-6 shadow-sm sm:p-8">
+              <p className="text-base leading-8 text-ink sm:text-lg">
+                We chose the name Mauri because it carries the feeling we wanted
+                this platform to create: life, vitality, balance, and inner
+                strength. For us, Mauri is not just about managing symptoms. It
+                is about helping women reconnect with their body, understand
+                their story, and move toward healthier cycles, renewed energy,
+                and confidence.
+              </p>
+              <p className="mt-5 rounded-lg bg-amber-light p-5 text-sm leading-6 text-ink">
+                We use Mauri as a brand expression of healing and vitality, with
+                respect for its deeper cultural meanings.
+              </p>
+            </div>
+          </motion.div>
         </PageContainer>
       </section>
 
       <section className="bg-teal-light/45 px-4 py-16 sm:px-6 lg:py-20">
         <PageContainer>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeUp}
-            transition={{ duration: 0.55 }}
-            className="mx-auto max-w-3xl text-center"
-          >
-            <div className="mx-auto mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-warm-white text-teal shadow-sm">
-              <Compass className="h-6 w-6" aria-hidden="true" />
-            </div>
-            <h2 className="font-playfair text-4xl font-normal leading-tight text-teal-dark sm:text-5xl">
-              Our Journey Together
-            </h2>
-            <p className="mt-5 text-base leading-7 text-muted sm:text-lg sm:leading-8">
-              Your journey with Mauri is designed to feel simple.
-            </p>
-          </motion.div>
+          <div className="grid items-stretch gap-5 lg:grid-cols-2">
+            <motion.article
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.25 }}
+              variants={fadeUp}
+              transition={{ duration: 0.55 }}
+              className="flex h-full flex-col rounded-xl border border-border bg-warm-white/95 p-6 shadow-sm sm:p-8"
+            >
+              <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-purple-light text-purple">
+                <GraduationCap className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <h2 className="mt-4 font-playfair text-3xl font-normal leading-tight text-teal-dark">
+                Founder Philosophy and Clinical Learning
+              </h2>
+              <div className="mt-5 space-y-4 leading-8 text-ink">
+                <p>
+                  Mauri grew from years of listening to women living with
+                  hormonal health challenges and learning from their real
+                  journeys.
+                </p>
+                <p>
+                  Some improved quickly. Some needed deeper investigation. Some
+                  relapsed when life became stressful. Each story shaped a more
+                  careful philosophy: support should be personal, educational,
+                  steady, and medically responsible.
+                </p>
+              </div>
+            </motion.article>
 
-          <div className="relative mx-auto mt-10 max-w-6xl lg:mt-14">
-            <div
-              className="absolute left-5 top-0 h-full w-px bg-border lg:left-0 lg:top-5 lg:h-px lg:w-full"
-              aria-hidden="true"
-            />
-
-            <div className="grid gap-4 lg:grid-cols-6">
-              {journeySteps.map((step, index) => (
-                <motion.article
-                  key={step.title}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.25 }}
-                  variants={fadeUp}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                  className="relative pl-14 lg:pl-0 lg:pt-14"
-                >
-                  <div className="absolute left-0 top-5 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-warm-white text-sm font-medium text-teal-dark shadow-sm lg:left-1/2 lg:top-0 lg:-translate-x-1/2">
-                    {index + 1}
-                  </div>
-                  <div className="rounded-xl border border-border bg-warm-white/95 p-5 shadow-sm">
-                    <h3 className="font-playfair text-2xl font-normal leading-tight text-teal-dark">
-                      {step.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-6 text-ink">
-                      {step.description}
-                    </p>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
+            <motion.article
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.25 }}
+              variants={fadeUp}
+              transition={{ duration: 0.55, delay: 0.05 }}
+              className="flex h-full flex-col rounded-xl border border-border bg-warm-white/95 p-6 shadow-sm sm:p-8"
+            >
+              <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-rose-light text-rose">
+                <MessageCircleHeart className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <h2 className="mt-4 font-playfair text-3xl font-normal leading-tight text-teal-dark">
+                Why Mauri Exists
+              </h2>
+              <div className="mt-5 space-y-4 leading-8 text-ink">
+                <p>
+                  Too many women are left to connect the dots alone between
+                  symptoms, labs, lifestyle, stress, food, movement, and
+                  treatment decisions.
+                </p>
+                <p>
+                  Mauri exists to make that process gentler. We help women ask
+                  better questions, notice meaningful patterns, and feel less
+                  alone while working with qualified healthcare professionals.
+                </p>
+              </div>
+            </motion.article>
           </div>
         </PageContainer>
       </section>
 
       <section className="px-4 py-16 sm:px-6 lg:py-20">
+        <PageContainer>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+            variants={fadeUp}
+            transition={{ duration: 0.55 }}
+            className="mx-auto max-w-3xl text-center"
+          >
+            <div className="mx-auto mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-teal-light text-teal">
+              <BookOpen className="h-6 w-6" aria-hidden="true" />
+            </div>
+            <h2 className="font-playfair text-4xl font-normal leading-tight text-teal-dark sm:text-5xl">
+              Lessons From Real Journeys
+            </h2>
+            <p className="mt-5 text-base leading-7 text-muted sm:text-lg sm:leading-8">
+              Mauri is shaped by lived experiences, clinical curiosity, and the
+              humility to keep learning.
+            </p>
+          </motion.div>
+
+          <div className="mt-10 grid items-stretch gap-5 md:grid-cols-3">
+            {lessons.map((lesson, index) => (
+              <motion.article
+                key={lesson.title}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.25 }}
+                variants={fadeUp}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="flex h-full flex-col rounded-xl border border-border bg-white/80 p-6 shadow-sm"
+              >
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-teal-light text-sm font-medium text-teal-dark">
+                  {index + 1}
+                </div>
+                <h3 className="mt-5 font-playfair text-2xl font-normal leading-tight text-teal-dark">
+                  {lesson.title}
+                </h3>
+                <p className="mt-4 text-sm leading-7 text-ink">
+                  {lesson.description}
+                </p>
+              </motion.article>
+            ))}
+          </div>
+        </PageContainer>
+      </section>
+
+      <section className="px-4 pb-16 sm:px-6 lg:pb-20">
         <PageContainer size="narrow">
           <motion.div
             initial="hidden"
@@ -248,36 +238,12 @@ export default function AboutMauriPageContent() {
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeUp}
             transition={{ duration: 0.55 }}
-            className="space-y-8"
+            className="space-y-6"
           >
-            <div className="rounded-xl border border-border bg-white/75 p-6 shadow-sm sm:p-8">
-              <div className="flex items-start gap-4">
+            <div className="rounded-xl border border-border bg-white/80 p-6 shadow-sm sm:p-8">
+              <div className="grid gap-4 sm:grid-cols-[2.75rem_1fr]">
                 <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-purple-light text-purple">
                   <HeartHandshake className="h-5 w-5" aria-hidden="true" />
-                </div>
-                <div>
-                  <h2 className="font-playfair text-3xl font-normal leading-tight text-teal-dark">
-                    Working Alongside Your Healthcare Team
-                  </h2>
-                  <div className="mt-4 space-y-4 leading-8 text-ink">
-                    <p>
-                      Mauri is designed to support, not replace, your healthcare
-                      professionals.
-                    </p>
-                    <p>
-                      We help you prepare for appointments, understand your
-                      reports, track meaningful changes, and become a more
-                      informed partner in your own care.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-xl border border-border bg-white/75 p-6 shadow-sm sm:p-8">
-              <div className="flex items-start gap-4">
-                <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-rose-light text-rose">
-                  <ShieldCheck className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <div>
                   <h2 className="font-playfair text-3xl font-normal leading-tight text-teal-dark">
@@ -285,15 +251,13 @@ export default function AboutMauriPageContent() {
                   </h2>
                   <div className="mt-4 space-y-4 leading-8 text-ink">
                     <p>
-                      We will never promise miracles. We will never promise
-                      instant results. We will never tell you there is one diet
-                      or one supplement that works for everyone.
+                      We will not promise instant results, perfect cycles, or a
+                      single plan that works for everyone.
                     </p>
                     <p>
-                      What we promise is something different: to walk beside
-                      you, keep learning, explain the science in simple
-                      language, personalize wherever possible, and help you move
-                      from confusion to confidence.
+                      We promise to explain with care, personalize where
+                      possible, honor your lived experience, and help you move
+                      from confusion toward clarity and confidence.
                     </p>
                   </div>
                 </div>
@@ -301,20 +265,13 @@ export default function AboutMauriPageContent() {
             </div>
 
             <div className="rounded-xl bg-teal-dark p-6 text-center shadow-sm sm:p-8">
-              <GraduationCap
-                className="mx-auto h-9 w-9 text-teal-mid"
-                aria-hidden="true"
-              />
+              <Sparkles className="mx-auto h-9 w-9 text-teal-mid" aria-hidden="true" />
               <h2 className="mt-4 font-playfair text-3xl font-normal leading-tight text-teal-light">
-                Because Healing Is More Than Treatment
+                Welcome to Mauri
               </h2>
-              <div className="mt-5 space-y-3 leading-7 text-teal-mid">
-                <p>Healing is understanding. Healing is consistency.</p>
-                <p>Healing is hope.</p>
-                <p>Healing is believing that your story deserves to be heard.</p>
-              </div>
-              <p className="mt-6 font-playfair text-2xl font-normal leading-snug text-teal-light">
-                Welcome to Mauri. Let's begin your journey.
+              <p className="mx-auto mt-5 max-w-xl leading-7 text-teal-mid">
+                A gentle place to learn your body, understand your patterns, and
+                take the next step with care.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
                 <Link

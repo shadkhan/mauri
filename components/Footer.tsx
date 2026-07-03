@@ -20,11 +20,10 @@ export default function Footer() {
               className="h-12 w-auto sm:h-14"
             />
             <p className="mt-4 max-w-xl text-sm leading-6">
-              Mauri provides educational guidance based on integrative research
-              and real case experience. It is not a substitute for professional
-              medical advice, diagnosis, or treatment. Always consult your
-              physician before making any changes to medication, supplements, or
-              treatment plans.
+              Mauri provides educational and supportive wellness guidance. It is
+              not a diagnosis, emergency service, or replacement for medical
+              care. Always consult a qualified healthcare professional for
+              medical decisions.
             </p>
           </div>
 
