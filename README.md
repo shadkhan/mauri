@@ -11,7 +11,7 @@ Mauri is a women's hormonal health platform for PCOS, PCOD, painful periods, end
 - Framer Motion
 - Lucide React icons
 - Resend for optional lead notification emails
-- CSV lead storage for the current no-database setup
+- Hostinger MySQL lead storage
 
 ## Current Features
 
@@ -37,15 +37,13 @@ Mauri is a women's hormonal health platform for PCOS, PCOD, painful periods, end
 
 ## Lead Capture
 
-The app currently does not use a database.
-
 Lead submissions are handled by:
 
 - `app/api/leads/route.ts`
-- CSV file: `storage/leads.csv`
+- MySQL table: `leads`
 - Optional Resend email notification
 
-CSV storage is useful for early testing, but for production patient data a proper database should be added later.
+The API creates the `leads` table automatically on the first successful submission.
 
 ## Environment Variables
 
@@ -58,6 +56,13 @@ cp .env.local.example .env.local
 Available variables:
 
 ```env
+DB_HOST=your_hostinger_mysql_host
+DB_PORT=3306
+DB_NAME=your_database_name
+DB_USER=your_database_user
+DB_PASSWORD=your_database_password
+DB_SSL=false
+
 RESEND_API_KEY=your_resend_api_key
 LEAD_NOTIFICATION_TO=your@email.com
 LEAD_NOTIFICATION_FROM=Mauri <onboarding@resend.dev>
@@ -125,13 +130,11 @@ npm run build
 npm run start
 ```
 
-Add the Resend environment variables in Hostinger's app environment settings before going live.
+Add the database and Resend environment variables in Hostinger's app environment settings before going live.
 
 ## Important Production Notes
 
 - The current app has no authentication enforcement yet.
-- The current app has no database yet.
-- CSV lead storage may not be durable across all hosting redeploys.
 - For production patient profiles, add a database before storing sensitive or long-term health records.
 - Keep medical language educational and route users toward the Mauri doctors and care team.
 

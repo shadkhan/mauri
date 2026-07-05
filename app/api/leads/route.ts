@@ -1,21 +1,11 @@
-import { mkdir, stat, writeFile } from 'fs/promises'
-import path from 'path'
 import { Resend } from 'resend'
+import { type ResultSetHeader } from 'mysql2'
 import { NextResponse } from 'next/server'
+import { getDbPool } from '@/lib/db'
 
 export const runtime = 'nodejs'
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-const csvHeaders = [
-  'created_at',
-  'name',
-  'email',
-  'source',
-  'quiz_result',
-  'endometriosis_flag',
-  'quiz_answers_json',
-]
-
 type LeadPayload = {
   name?: unknown
   email?: unknown
@@ -35,27 +25,6 @@ type Lead = {
   endometriosis_flag: boolean
 }
 
-function csvEscape(value: unknown) {
-  const text =
-    typeof value === 'string' ? value : JSON.stringify(value ?? '') ?? ''
-
-  return `"${text.replace(/"/g, '""')}"`
-}
-
-function leadToCsvRow(lead: Lead) {
-  return [
-    lead.created_at,
-    lead.name,
-    lead.email,
-    lead.source,
-    lead.quiz_result,
-    lead.endometriosis_flag,
-    lead.quiz_answers,
-  ]
-    .map(csvEscape)
-    .join(',')
-}
-
 function formatAnswers(answers: unknown) {
   if (!answers || typeof answers !== 'object') {
     return 'No quiz answers submitted.'
@@ -69,21 +38,49 @@ function formatAnswers(answers: unknown) {
     .join('\n')
 }
 
-async function appendLeadToCsv(lead: Lead) {
-  const storageDir = path.join(process.cwd(), 'storage')
-  const csvPath = path.join(storageDir, 'leads.csv')
-  const row = `${leadToCsvRow(lead)}\n`
+async function ensureLeadTable() {
+  await getDbPool().execute(`
+    CREATE TABLE IF NOT EXISTS leads (
+      id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+      created_at DATETIME(3) NOT NULL,
+      name VARCHAR(255) NOT NULL,
+      email VARCHAR(320) NOT NULL,
+      source VARCHAR(120) NOT NULL,
+      quiz_result VARCHAR(255) NOT NULL DEFAULT '',
+      endometriosis_flag BOOLEAN NOT NULL DEFAULT FALSE,
+      quiz_answers JSON NULL,
+      PRIMARY KEY (id),
+      INDEX idx_leads_created_at (created_at),
+      INDEX idx_leads_email (email)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  `)
+}
 
-  await mkdir(storageDir, { recursive: true })
+async function saveLead(lead: Lead) {
+  await ensureLeadTable()
 
-  try {
-    await stat(csvPath)
-    await writeFile(csvPath, row, { flag: 'a' })
-  } catch {
-    await writeFile(csvPath, `${csvHeaders.join(',')}\n${row}`, {
-      flag: 'wx',
-    })
-  }
+  const [result] = await getDbPool().execute<ResultSetHeader>(
+    `INSERT INTO leads (
+      created_at,
+      name,
+      email,
+      source,
+      quiz_result,
+      endometriosis_flag,
+      quiz_answers
+    ) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+    [
+      new Date(lead.created_at),
+      lead.name,
+      lead.email,
+      lead.source,
+      lead.quiz_result,
+      lead.endometriosis_flag,
+      JSON.stringify(lead.quiz_answers),
+    ],
+  )
+
+  return result.insertId
 }
 
 async function sendLeadEmail(lead: Lead) {
@@ -173,9 +170,9 @@ export async function POST(request: Request) {
   }
 
   try {
-    await appendLeadToCsv(lead)
+    await saveLead(lead)
   } catch (error) {
-    console.error('Failed to write lead CSV:', error)
+    console.error('Failed to save lead:', error)
     return NextResponse.json(
       { error: 'Could not save your details. Please try again.' },
       { status: 500 },

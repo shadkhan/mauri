@@ -19,6 +19,11 @@
 
 ## Required Runtime Environment Variables
 
+- `DB_HOST`
+- `DB_PORT`
+- `DB_NAME`
+- `DB_USER`
+- `DB_PASSWORD`
 - `RESEND_API_KEY`
 - `LEAD_NOTIFICATION_TO`
 - `LEAD_NOTIFICATION_FROM`
@@ -27,6 +32,7 @@
 
 Optional:
 
+- `DB_SSL=true` if Hostinger requires SSL for MySQL connections
 - `NEXT_PUBLIC_POSTHOG_KEY`
 - `NEXT_PUBLIC_POSTHOG_HOST`
 
